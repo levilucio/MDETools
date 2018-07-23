@@ -1,0 +1,113 @@
+% This is samplepaper.tex, a sample chapter demonstrating the
+% LLNCS macro package for Springer Computer Science proceedings;
+% Version 2.20 of 2017/10/04
+%
+\documentclass[runningheads]{llncs}
+%
+\newcommand{\todo}[1]{\textbf{\textcolor{red}{TODO: #1}}} 
+
+\usepackage{graphicx}
+
+\usepackage{cite}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{algorithmic}
+\usepackage{graphicx}
+\usepackage{textcomp}
+\usepackage{xspace}
+\usepackage{url}
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em 
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+    
+% Put edit comments in a really ugly standout display
+\usepackage{times}
+ 
+% Macros for proof-reading & corrections
+\usepackage[normalem]{ulem} % for \sout  
+\usepackage{xcolor} 
+
+% Macros for proof-reading & corrections
+\usepackage[normalem]{ulem} % for \sout  
+\usepackage{xcolor} 
+
+\usepackage{ifthen}
+\usepackage{amssymb} 
+\newboolean{showcomments}  
+\setboolean{showcomments}{true} % toggle to show or hide comments
+\ifthenelse{\boolean{showcomments}}     
+  {\newcommand{\nb}[2]{
+    \fcolorbox{gray}{yellow}{\bfseries\sffamily\scriptsize#1}
+    {$\blacktriangleright$#2$\blacktriangleleft$}
+   }
+   \newcommand{\version}{\emph{\scriptsize$-$working$-$}} 
+  }
+  {\newcommand{\nb}[2]{}
+   \newcommand{\version}{} 
+  } 
+
+\newcommand\levi[1]{\nb{Levi}{\textcolor{teal}{#1}}}
+\newcommand\hernan[1]{\nb{Hernan}{\textcolor{teal}{#1}}}
+
+\newcommand{\af}{\textsc{AF3}\xspace}
+\newcommand{\autofocus}{\textsc{AutoFOCUS3}\xspace}
+
+% Used for displaying a sample figure. If possible, figure files should
+% be included in EPS format.
+%
+% If you use the hyperref package, please uncomment the following line
+% to display URLs in blue roman font according to Springer's eBook style:
+% \renewcommand\UrlFont{\color{blue}\rmfamily}
+
+\begin{document}
+%
+\title{Controlling a Virtual Rover using AutoFOCUS3}
+%
+%\titlerunning{Abbreviated paper title}
+% If the paper title is too long for the running head, you can set
+% an abbreviated paper title here
+%
+\author{Levi L\'ucio \and
+Sudeep Kanaav} 
+%
+\authorrunning{Levi L\'ucio and Sudeep Kanaav}
+% First names are abbreviated in the running head.
+% If there are more than two authors, 'et al.' is used.
+%
+\institute{fortiss GmbH\\ Guerickestra\ss e 25\\80805 M\"unchen\\
+\email{\{lucio,kanav\}@fortiss.org}}
+%
+\maketitle              % typeset the header of the contribution
+%
+\begin{abstract}
+\autofocus (\af) is a mature model-driven engineering environment to develop
+software for embedded systems. For the past 20 years, several versions of \af
+have served as a platform for experimenting with cutting edge research ideas in
+Model-Driven Development.
+\af is a tool that fully encompasses the software lifecycle, from requirements,
+to architecture, simulation, deployment, code generation and verification. The
+attendees of this tutorial will be given the unique opportunity to model and deploy
+software on a real remote-controlled vehicle, using only \af.\levi{finish this
+abstract}
+ 
+\keywords{First keyword  \and Second keyword \and Another keyword.}
+\end{abstract}
+  
+\input{text/introduction}
+
+\input{text/physical_rover_model}
+
+\input{text/reduced_model}  
+
+\input{text/deployment}
+
+\input{text/code_generation}
+
+\input{text/connection_virtualenv}
+
+\input{text/running_model}
+
+\input{text/conclusion} 
+
+\bibliographystyle{abbrv} 
+\bibliography{./references}
+
+\end{document}
