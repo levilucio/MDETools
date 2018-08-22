@@ -1,20 +1,22 @@
-\section{introduction}
+\section{Introduction}
 
-Based on the FOCUS theory~\cite{Broy:2001:SDI:374869}, a framework encompassing
-computations supported by the notion of streams (“in particular untimed, timed
-and time-synchronous streams” \cite{Holzl:2007:AST:1927558.1927576}),
-the current version of \af follows a string of earlier
-prototypes~\cite{Holzl:2007:AST:1927558.1927576,DBLP:conf/models/AravantinosVTHS15}, started in 1996~\cite{Huber96autofocus--}. Existing literature on \af
-(some of it published at MODELS) reports on particular aspects of the
-tool~\cite{TMR2013,TMR2011,Lucio:17,DBLP:conf/se/VossEH14,Barner2016,Diewald2016,Carlan2017}, or on its
-application in the context of industrial case
+\autofocus is a model-based development (MBD) environment for embedded systems,
+based on the \textsf{Focus} theory~\cite{Broy:2001:SDI:374869}. \textsf{Focus} is a framework
+encompassing computations supported by the notion of streams (“in particular
+untimed, timed and time-synchronous streams”
+\cite{Holzl:2007:AST:1927558.1927576}). The current version of \af follows a
+string of earlier
+prototypes~\cite{Holzl:2007:AST:1927558.1927576,DBLP:conf/models/AravantinosVTHS15}
+started in 1996~\cite{Huber96autofocus--}. Existing literature on \af (some of
+it published at MODELS) reports on particular aspects of the
+tool~\cite{TMR2013,TMR2011,Lucio:17,DBLP:conf/se/VossEH14,Barner2016,Diewald2016,Carlan2017},
+or on its application in the context of industrial case
 studies~\cite{2009-a-top-down-methodology-for-the-development-of-automotive-software,2011KeylessEntry,Bohm:2014:FSE:2593850.2593856,DBLP:conf/models/AravantinosVTHS15,Barner2017,Eder2017}.
 More information about current state of the \af-related research can be found in
 the official site of the tool\footnote{ https://af3.fortiss.org/}. \af can be
 freely downloaded and is open-source.
 
-\af is an academic implementation of a model-based development (MBD)
-environment for embedded systems. Its goal is to demonstrate the feasibility and applicability of
+\af's goal is to demonstrate the feasibility and applicability of
 MBD tooling approaches. The idea behind \af embraces seamless integration of all models throughout the
 development process, encompassing requirements engineering on initial stage, system
 modeling at a high level of abstraction, deployment and model simulation. \af
@@ -47,4 +49,24 @@ only open-source model-driven tool that supports the whole embedded-software dev
 cycle in an out-of-the-box, easily installable package. \af includes support
 for requirements engineering, formal verification, deployment or domain space
 exploration cases natively (among other features), which we have not found in
-combined in one unique package in other tools. 
+combined in one unique package in other tools.\\
+
+In this paper we explain how we have developed an \af model to operate a rover
+in a virtual environment in a way that it follows another leader rover that
+advances freely, while always keeping a safe distance. ``Sensor" data regarding
+the position of the rover in front and the distance between the two rovers is
+provided by the environment. The rover has access to its own position and angle
+of movement and should constantly adjust its speed and angle by directing power
+to the wheels (turning implies asymetrically providing power to the left and
+right wheels). The virtual environment the rover functions on has been proposed
+is part of the MDE tool challenge proposed by the MDE Tools workshop at the
+MODELS 2018 conference.
+
+The paper is organized as follows. In \sect\ref{sec:toy_rover_controller} we
+provide a high level description of a controller built in \af for a physical car in the
+context of a lab course offered at the Technical University of Munich.
+Section~\ref {sec:control_vr_model} then describes how we have adapted the
+Adaptive Cruise Control component built during the lab courses to serve the
+purpose of following the leader. In \sect\ref{sec:deploy_generate} we explain
+how we have deployed the model and generated \clang code for the controller. Section
+\sect\ref{sec:conclusion} concludes.

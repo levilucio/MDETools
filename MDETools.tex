@@ -45,7 +45,7 @@
   } 
 
 \newcommand\levi[1]{\nb{Levi}{\textcolor{teal}{#1}}}
-\newcommand\hernan[1]{\nb{Hernan}{\textcolor{teal}{#1}}}
+\newcommand\andreas[1]{\nb{Andreas}{\textcolor{teal}{#1}}}
 \newcommand\sk[1]{\nb{sk}{\textcolor{teal}{#1}}}
 
 \newcommand{\af}{\textsc{AF3}\xspace}
@@ -60,8 +60,11 @@
 \newcommand{\sect}{\text{section}\xspace} 
 \newcommand{\tab}{\text{table}\xspace}
 \newcommand{\eg}{\text{e.g.}\xspace}
-\newcommand{\pid}{\text{Pid}\xspace} 
-
+\newcommand{\pid}{\textsc{Pid}\xspace}
+\newcommand{\clang}{\textsc{C}\xspace}
+\newcommand{\java}{\textsc{Java}\xspace}
+\newcommand{\ecu}{\textsc{Ecu}\xspace}
+\newcommand{\acc}{\textsc{Acc}\xspace} 
 
 % Used for displaying a sample figure. If possible, figure files should
 % be included in EPS format.
@@ -70,7 +73,7 @@
 % to display URLs in blue roman font according to Springer's eBook style:
 % \renewcommand\UrlFont{\color{blue}\rmfamily}
 
-\begin{document}
+\begin{document} 
 % 
 \title{Controlling a Virtual Rover using AutoFOCUS3}
 %
@@ -79,14 +82,14 @@
 % an abbreviated paper title here
 %
 \author{Levi L\'ucio \and
-Sudeep Kanaav} 
+Sudeep Kanaav \and Andreas Bayha \and Johannes Eder} 
 %
-\authorrunning{Levi L\'ucio and Sudeep Kanaav}
+%\authorrunning{Levi L\'ucioSudeep Kanaav}
 % First names are abbreviated in the running head.
 % If there are more than two authors, 'et al.' is used.
 %
 \institute{fortiss GmbH\\ Guerickestra\ss e 25\\80805 M\"unchen\\
-\email{\{lucio,kanav\}@fortiss.org}}
+\email{\{lucio,kanav,bahya,eder\}@fortiss.org}}
 %
 \maketitle              % typeset the header of the contribution
 %
@@ -96,12 +99,20 @@ software for embedded systems. For the past 20 years, several versions of \af
 have served as a platform for experimenting with cutting edge research ideas in
 Model-Driven Development.
 \af is a tool that fully encompasses the software lifecycle, from requirements,
-to architecture, simulation, deployment, code generation and verification. The
-attendees of this tutorial will be given the unique opportunity to model and deploy
-software on a real remote-controlled vehicle, using only \af.\levi{finish this
-abstract}
+to architecture, simulation, deployment, code generation and verification. In
+this article we describe how we used an existing model of a complex controller
+for a real-life rover and have downsized and adapted it to control a rover in a
+virtual environment. The model we present here automates the maneuvering
+a rover to follow another leader rover in the virtual environment, while
+keeping a safe distance to it. The controller operates by adapting the rover's
+speed and steering according to the position and movements of the leader.
+The results we present in this article illustrate the whole development cycle of
+an embedded system using \af, from the development of the model down to
+deployment to a specific platform as well as code generation and connecting to
+the hardware.
  
-\keywords{First keyword  \and Second keyword \and Another keyword.}
+\keywords{Modelling Environment \and Embedded Systems \and Deployment \and Code
+Generation \and Controller.}
 \end{abstract}
   
 \input{text/introduction}
@@ -109,14 +120,8 @@ abstract}
 \input{text/physical_rover_model}
 
 \input{text/reduced_model}  
-
-\input{text/deployment}
-
+ 
 \input{text/code_generation}
-
-\input{text/connection_virtualenv}
-
-\input{text/running_model}
 
 \input{text/conclusion} 
 

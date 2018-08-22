@@ -1,57 +1,54 @@
-\section{Control a Physical Toy Rover with AutoFOCUS3}
+\section{Controlling a Physical Vehicle with \autofocus}
 \label{sec:toy_rover_controller}
 
-We have been offering the practical course "From Sensors to Driving Functions - Develop Your Own Car" at the Technical University of Munich in the past year. The students are provided with the requirements to model a system, from the logical architecture to the platform architecture, using \af. Then the code is generated which is executed on the hardware.  We provide the students with the rovers and fix any bugs found by them in \af. Additionally, students are also required to integrate the modeled system running on Raspberry Pis with the actual rover hardware, i.e., instead of using a joy stick, the developed system controls the rover.
+The model that we developed for the MDE tool challenge is based on a larger
+model, that was originally created in the context of a lab course at Technical
+University Munich. Two subsequent courses involving 10 students not only built
+the logical model for the vehicle, but also the hardware platform of a car in
+the scale of 1:10.
+An important requirement for this vehicle was a high level of realism. Accordingly,
+a professional platform with a realistic Ackermann steering and electrical all
+wheel drive was chosen and configured in such a way that the driving
+dynamics correspond to a realistic car. A picture of the vehicle is shown in
+\fig\ref{fig:vehicle}.
 
-The model used in this case study was developed by the students of this practical course in the summer semester 2018. We have taken this model and reused the elements relevant to this case study. 
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1\textwidth]{images/FullSizeRender.jpg}
+\caption{A Physical Rover used for a lab course at the Technical University
+of Munich}
+\label{fig:vehicle}
+\end{figure}
 
-The goal of the practical course was to implement platooning for rovers. Rovers were expected to drive in a platoon following the one ahead while maintaining only a small safety distance. Capability to follow another rover is a necessary feature required for implementing platooning. For this case study we have reused and extended the components dealing with this feature. 
+The model that the students developed in the first lab course implemented basic
+driving functionalities such as steering, braking, accelerating, gear shifting
+and different drive modes, as well as two driver assistance functions for
+emergency braking and adaptive cruise control.
+The second lab course extended this outcome with lane keeping as well as
+vehicle2vehicle communication and platooning.
+Our main interest in the development of such a vehicle was to show the
+applicability of model-based development by using our tool \autofocus on the one
+hand, and on the other hand to come up with a software architecture for future
+(semi-) autonomous cars. The general question we addressed was
+how (semi-) autonomous functionality can be integrated into a software
+architecture of a car, using a model-based approach. The current state of the
+architecture is shown in \fig\ref{fig:vehicle_architecture} and is given as a
+means to illustrate the complexity of the model of the controller developed by
+the students.
 
-We now briefly describe the complete system developed during the course. The students were divided in four teams each dealing with a specific part of the development: platooning, lane keeping, communication and simulation.
+\begin{figure}[!h]
+\centering
+\includegraphics[width=1.4\textwidth, angle=90]{images/ACC_architecture}
+\caption{The \af Model developed by the Students to Control a Physical Vehicle}
+\label{fig:vehicle_architecture}
+\end{figure}
 
-\subsection{Platooning}
-The platooning team was responsible for developing the logical aspect of the platooning system. The functionality was divided into following sub-features: platooning as leader, platooning as follower, create platoon, fuse platoons, split platoon and leave platoon.
-
-The team was provided with the model containing basic features (which were developed by the students of the previous practical course) like emergency braking, adaptive cruise control and were supposed to further develop this model providing the platooning feature.
-
-\begin{figure*}[!h]
-	\centering
-	\includegraphics[width=1\textwidth]{./img/platooningArchitecture.png}
-	\caption{Platooning architecture}
-	\label{fig:platooning}
-\end{figure*}
-
-Figure \ref{fig:platooning} shows the architecture of the platooning component. There are two main components: platoon management and platoon control. The control component controls the behavior of each platoon member ensuring that the whole platoon moves as a single vehicle. It is responsible for vehicles to move at the constant speed, brake and accelerate simultaneously. It takes input from the sensor data, processes it and outputs driving signals such as target velocity and steering angle. The management component is responsible for processing platoon messages (e.g., joining, splitting, leaving the platoon), handling internal platoon states, and communication with the platoon control component.
- 
-\subsection{Lane keeping}
-The lane keeping team was responsible for keeping the rover in the same lane while driving. The team mounted a camera on the rover. This image was then processed on a dedicated Raspberry Pi to detect the lane and map it on the world coordinate system (relative to the center of the rover's front-bumper). The lane-data thus generated is delivered using TCP to the system that was modeled using \af. The system then calculates the required steering angle to stay in the lane based on this data and sends out the control signal to turn the steering accordingly. Figure \ref{fig:lane_keeping} shows the controller architecture for lane keeping as modeled in \af. 
-
-\begin{figure*}[!h]
-	\centering
-	\includegraphics[width=1\textwidth]{./img/LK_Controller_Screenshot.png}
-	\caption{Controller for lane keeping}
-	\label{fig:lane_keeping}
-\end{figure*}
-
-
-\subsection{Communication}
-
-The communication team was responsible for: 
-\begin{enumerate}
-	\item \textit{Intra vehicle communication}: Setting up a CAN-communication between multiple Raspberry Pis on the same rover.
-	\item \textit{Inter vehicle communication}: Developing a mechanism for communication between rovers using wifi. This communication uses UDP broadcasts.
-	\item \textit{Control center}:  Developing a debugging tool which can be used to intercept and modify messages between the system and the rover, e.g. sensor data, or steering command.
-\end{enumerate}
-
-\subsection{Simulation}
-
-The simulation team was responsible for conducting hardware in the loop tests to assist in the development of the system. The team used the software CarMaker \footnote{https://ipg-automotive.com/products-services/simulation-software/carmaker/} to create a vehicle data set. CarMaker and AF3 both support functional mock-up interface (FMI) \footnote{https://fmi-standard.org}. AF3 model was exported as FMU and imported in CarMaker for to be cosimulated with the designed vehicle.
-
-\begin{figure*}[!h]
-	\centering
-	\includegraphics[width=1\textwidth]{./img/lk_concept.png}
-	\caption{The simulation panel of \af}
-	\label{fig:simulation}
-\end{figure*}
-
-
+For the MDE tool challenge we used the Adaptive Cruise Control (\acc) part of
+the model, highlighted in  \fig\ref{fig:vehicle_architecture}. Because of the
+component based approach of \af, we were able to reuse the component which
+realized this function and adapt it to the challenge by developing against the
+component's interface. Although we kept that part of the functionality that
+adapts the distance to the leader rover, we had to incorporate in the model new
+capabilities to allow automatic steering in order to implement the ``follow the
+leader'' requirement. Naturally, we also had to adapt the inputs and the outputs of the
+component to the data provided and expected by the virtual environment.

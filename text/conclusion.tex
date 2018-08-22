@@ -1,1 +1,24 @@
 \section{Conclusion}
+\label{sec:conclusion}
+
+We have presented in this article the lifecycle of the development of
+a controller for a virtual rover, based on a controller for a real vehicle
+developed at lab courses given by us. Our experience points to the fact that \af3 is
+a sufficiently mature environment for developing embedded systems, in
+particular controllers. The facilities for generating code for a specific platform (in our case a generic one) make life
+for the developer of embedded code simple, as the communication infrastructure
+with the underlying hardware can be fully automated. We have observed this
+advantage when we, in the course of the lab courses, deployed the code
+generated from models directly to Raspberry Pis, without any need for further customization. Additionally, the modularity enforced by \af
+makes it easy to reuse parts of projects. The copy/paste facilities of \af are
+also very helpful in that respect.
+
+We have certainly encountered editing issues with \af's editor while building
+the model for the challenge, but they were minor and the modelling experience
+was very slighted affected by them. The calibration of controllers such as the
+one we present in this paper also poses a problem, as it is mostly only
+possible once the hardware is in the loop with the generated code. \af does
+provide a basic infrastructure for calibration (although a prototypical version
+of such an infrastructure does exist). In practice, we have observed that a
+significant amount of time still needs to be devoted to making sure the
+parameters of the controller are well configured.

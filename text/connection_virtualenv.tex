@@ -1,1 +1,11 @@
 \section{Connecting to the Virtual Environment}
+\label{sec:connect_virtual_env}
+
+The logic of the controller for the rover that us generated in \clang can then
+run in an infinite loop, cycling over reading the inputs from the sensors in the
+rover and then computing and sending values to its actuators. The \clang
+code that is generated for the generic architecture only provides the
+interface for the functions that read the sensors and send commmands on the
+actuators of the virtual environment. Because of that, a manual step of
+coding such methods and connecting the controller with the virtual environment
+via TCP was additionally necessary to connect the controller to the rover. 
