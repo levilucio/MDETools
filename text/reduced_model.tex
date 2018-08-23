@@ -38,7 +38,7 @@ apply the brakes.
 \end{figure}
 
 The logic for the \emph{Controller} is partially shown in
-\fig\ref{fig:pid_controller} (in the \af action language which has Java-like syntax\footnote{\af 's action
+\fig\ref{fig:controller_logic} (in the \af action language which has Java-like syntax\footnote{\af 's action
 language allows for the usual imperative constructs. It is however not a
 full-blown programming language as for instance variables cannot be declared
 in such scripts. Such limitations were implemented in order to promote the
@@ -78,7 +78,7 @@ follow the leader.
 
 Note also \textsf{COEFFICIENT\_TURNING\_RATE()}  in the snippet of code in
 \fig\ref{fig:controller_logic} is a function that is part of the data dictionary
-of the project, partially shown in \fig\ref{fig:p_coefficient}. This function
+of the project, partially shown in \fig\ref{fig:coefficient_turning_rate}. This function
 returns the constant \textsf{0.9}. Note that functions in the data dictionary
 do not only return constants and can in the general case perform complex
 calculations.
