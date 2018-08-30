@@ -13,9 +13,6 @@ of the rover itself controls engine power (using an embedded \pid controller) in
 order to attain such a speed and maintain it. The virtual rover expects that
 power to the wheels is provided as a means to attain a certain speed.
 
-\af provides a generic, non-device specific architecture for deployment, as
-shown in \fig~\ref{fig:deployment_general}.
-
 \begin{figure}[!h]
 \centering
 \includegraphics[width=.8\textwidth]{images/newECU.png}
@@ -23,9 +20,10 @@ shown in \fig~\ref{fig:deployment_general}.
 \label{fig:deployment_general}
 \end{figure}
 
-Additionally, the ports of the of the \ecu need to be mapped to the logical
-ports of the controller of the model we have defined in
-\sect~\ref{sec:control_vr_model}, as depicted in
+\af provides a generic, non-device specific architecture for deployment, as
+shown in \fig~\ref{fig:deployment_general}. Additionally, the ports of the \ecu
+need to be mapped to the logical ports of the controller of the model we have
+defined in \sect~\ref{sec:control_vr_model}, as depicted in
 figure~\ref{fig:deployment_ports}.
 
 \begin{figure}[!h]
@@ -35,12 +33,14 @@ figure~\ref{fig:deployment_ports}.
 \label{fig:deployment_ports}
 \end{figure}
  
-Deploying to an architecture provides the skeleton of an interface that declares
-the signatures of the methods that are used by the controller logic to
+Deploying onto an architecture provides the skeleton of an interface that
+declares the signatures of the methods used by the controller logic to
 communicate with the device underneath. When the architecture is fully defined,
-then the glue code with the device can also be automatically generated. For our
-work we have deployed onto a generic architecture as a means to automatically
-generate the structure of our controller's communication infrastructure as \clang\footnote{Besides \clang, \af also allows the generating \java code.} code. The logic corresponding to the model we have presented in
+the code with for gluing with the device can also be automatically generated.
+For our work we have deployed onto a generic architecture as a means to
+automatically generate the structure of our controller's communication
+infrastructure as \clang\footnote{Besides \clang, \af also allows the generating
+\java code.} code. The logic corresponding to the model we have presented in
 \sect~\ref{sec:toy_rover_controller} is also generated as \clang code and is
 meant to run in a loop with the controlled device, in this case the virtual
 rover.

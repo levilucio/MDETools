@@ -7,8 +7,7 @@ untimed, timed and time-synchronous streams”
 \cite{Holzl:2007:AST:1927558.1927576}). The current version of \af follows a
 string of earlier
 prototypes~\cite{Holzl:2007:AST:1927558.1927576,DBLP:conf/models/AravantinosVTHS15}
-started in 1996~\cite{Huber96autofocus--}. Existing literature on \af (some of
-it published at MODELS) reports on particular aspects of the
+started in 1996~\cite{Huber96autofocus--}. Existing literature on \af reports on particular aspects of the
 tool~\cite{TMR2013,TMR2011,Lucio:17,DBLP:conf/se/VossEH14,Barner2016,Diewald2016,Carlan2017},
 or on its application in the context of industrial case
 studies~\cite{2009-a-top-down-methodology-for-the-development-of-automotive-software,2011KeylessEntry,Bohm:2014:FSE:2593850.2593856,DBLP:conf/models/AravantinosVTHS15,Barner2017,Eder2017}.
@@ -24,8 +23,8 @@ also comprises formal verification and testing. Being an open source tool with a
 release period, \af embodies a study tool for proving scientific concepts and
 methods which have been tested via industrial case studies.
 
-In the context of domain-specific development, there are several approaches to
-system modeling. The first of those is characterized by starting from a general
+In the context of domain-specific software development, there are several
+approaches to system modeling. The first of those is characterized by starting from a general
 (non platform-specific) model and proceed by transforming this model into
 specialized one. In this approach, domain specific languages are built by
 restricting a universal language (such as the UML) and incarnated as development
@@ -41,26 +40,27 @@ is built on top of an extensible kernel which constitutes a base for further
 development. Examples of other tools that follow \af's ``bottom-up'' approach are
 Sirius\cite{Sirius} or JetBrains' MPS\cite{MPS}.
 
-Tools that resemble \af in some way are Enterprise
-Architect~\cite{SparxSystems}, Papyrus~\cite{Papyrus}, UML Designer~\cite{UMLDesigner}, Sirius\cite{Sirius}, JetBrains' MPS~\cite{MPS},
-mbeddr~\cite{mbeddr} or Simulink~\cite{simulink}. Although space does not allow elaborating on the
-differences between these tools and \af, our tool is to the best of our knowledge the
-only open-source model-driven tool that supports the whole embedded-software development
-cycle in an out-of-the-box, easily installable package. \af includes support
-for requirements engineering, formal verification, deployment or domain space
+Tools that resemble \af in purpose are Enterprise Architect~\cite{SparxSystems},
+Papyrus~\cite{Papyrus}, UML Designer~\cite{UMLDesigner}, Sirius\cite{Sirius},
+JetBrains' MPS~\cite{MPS}, mbeddr~\cite{mbeddr} or Simulink~\cite{simulink}.
+Although space does not allow elaborating on the differences between these tools
+and \af, our tool is, to the best of our knowledge, the only open-source
+model-driven tool that supports the whole embedded-software development cycle in
+an out-of-the-box, easily installable package. \af includes support for
+requirements engineering, formal verification, deployment or domain space
 exploration cases natively (among other features), which we have not found in
 combined in one unique package in other tools.\\
 
 In this paper we explain how we have developed an \af model to operate a rover
 in a virtual environment in a way that it follows another leader rover that
-advances freely, while always keeping a safe distance. ``Sensor" data regarding
-the position of the rover in front and the distance between the two rovers is
+advances freely, while always keeping a safe distance to it. ``Sensor" data
+regarding the position of the rover in front and the distance between the two rovers is
 provided by the environment. The rover has access to its own position and angle
 of movement and should constantly adjust its speed and angle by directing power
 to the wheels (turning implies asymetrically providing power to the left and
-right wheels). The virtual environment the rover functions on has been proposed
-is part of the MDE tool challenge proposed by the MDE Tools workshop at the
-MODELS 2018 conference.
+right wheels). The virtual environment the rover functions on is part of the MDE
+tool challenge proposed by the MDE Tools workshop at the MODELS 2018
+conference~\cite{mdetools18}.
 
 The paper is organized as follows. In \sect\ref{sec:toy_rover_controller} we
 provide a high level description of a controller built in \af for a physical car in the
