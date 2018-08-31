@@ -37,18 +37,19 @@ ranges.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=1\textwidth]{images/straight.png}
-	\caption{Component for calculating required forward power.}
+	\caption{Subcomponents implementing the StraightAcceleration component.}
 	\label{fig:straight}
 \end{figure}
 
 
 We then use this \textit{error} and feed it to a PID controller for calculating
 the power to be directed forward. The general equation for a PID controller
-is\levi{explain in one sentence what this equation means}:
+is:
 \begin{equation}
 u = K_Pe + K_II + K_DD
 \label{formula:pidController}
 \end{equation}
+, where $K_P, K_I$ and $K_D$ are the parameters of the controller, $e$ is the error with the desired value, $I$ is the integral - summation of the previous errors, and $D$ the differential - difference with the last error.
 
 For calculating the forward power we have used the following constant values: $K_P = 5$, $K_I=1.5$, $K_D=30$.
 
@@ -74,7 +75,7 @@ wheels. The sign of this value decides the direction of the turning.
 \begin{figure}[!h]
 	\centering
 	\includegraphics[width=1\textwidth]{images/rotation.png}
-	\caption{Component for calculating the differential power.}
+	\caption{Subcomponents implementing the RotationalDifferential component.}
 	\label{fig:rotation}
 \end{figure}
 
@@ -83,16 +84,14 @@ The constants used of the PID controller (equation
 $K_P = 2$, $K_I=0.75$, $K_D=10$.
 
 \subsection{Component CalculateFinalPower}
-The \textsf{CalculateFinalPower} component takes the forward power and
-\levi{rotational?} differential, and outputs the final power to apply to the
+The \textsf{CalculateFinalPower} component takes the forward power and rotational differential, and outputs the final power to apply to the
 right and left wheels.
 In addition to calculating the values for the right and left power, the
 component also normalizes the amount of power provided in case the calculated
 value exceeds the maximum.
 
 The environment of the rover challenge proposed by the MDETools workshop
-provides at the end of a run of the system \levi{can you write here how long
-each run lasts?} the percentage of time during which the rover was within the
+provides at the end of a run of the system, which lasts one minute, the percentage of time during which the rover was within the
 expected distance limits. The system we developed consistently
 stays within these limits over 70\% of the runs we have attempted. Although we
 have not tuned the values of the PID controller further, we believe even better results could be achieved.
